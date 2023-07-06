@@ -23,10 +23,6 @@
     "rules": {
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "linebreak-style":[
-            "error",
-            "windows"
-        ],
         "react/jsx-filename-extension": [
             1,
             {
