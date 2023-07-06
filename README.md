@@ -7,7 +7,7 @@ Projeto desenvolvido durante o treinamento de React Native da FAI (23.2) de Dese
 
 2. Clone the repository by running
 ```bash
-https://github.com/CITi-UFPE/supra7-client.git
+https://github.com/lilicarla/fai-react-native.git
 ```
 
 3. Install all the dependencies by running
