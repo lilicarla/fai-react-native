@@ -1,7 +1,7 @@
 import ThemeProvider from './ThemeProvider';
-import Button from './Button';
+import RoundedButton from './RoundedButton';
 
 export {
-  Button,
   ThemeProvider,
+  RoundedButton,
 };
