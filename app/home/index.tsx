@@ -1,61 +1,47 @@
 import React from 'react';
+import { RoundedButton, PopUp } from '@components';
+import { useRouter } from 'expo-router';
 import {
-  View, Text, StyleSheet, Image,
-} from 'react-native';
-import { RoundedButton } from '@components';
+  Container,
+  Background,
+  Content,
+  Logo,
+  Title,
+  InfoIcon,
+  IconContainer,
+} from './styles';
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#ffffff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '500',
-    marginBottom: 50,
-  },
-  logo: {
-    height: 50,
-    width: 100,
-    resizeMode: 'contain', // 'cover' | 'contain' | 'stretch' | 'repeat' | 'center'
-    marginTop: 50,
-    marginBottom: 30,
-  },
-  background: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
-  content: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-});
+const Home: React.FC = () => {
+  const [showPopUp, setShowPopUp] = React.useState<boolean>(false);
+  const router = useRouter();
 
-const Home: React.FC = () => (
-  <View style={styles.container}>
-    <Image
-      source={{ uri: 'https://citi.org.br/wp-content/uploads/2021/09/Vector-573x1024.png' }}
-      style={styles.background}
-    />
-    <View style={styles.content}>
-      <Image
-        style={styles.logo}
-        source={{ uri: 'https://citi.org.br/wp-content/uploads/2021/09/image-66-1.png' }}
+  return (
+    <Container>
+      <Background
+        source={{ uri: 'https://citi.org.br/wp-content/uploads/2021/09/Vector-573x1024.png' }}
       />
-      <Text style={styles.title}>
-        &lt;Desenvolvimento /&gt;
-      </Text>
-      <RoundedButton text="Web" onPress={() => { console.log('botão 01'); }} />
-      <RoundedButton text="Mobile" onPress={() => { console.log('botão 02'); }} />
-    </View>
-  </View>
-);
+      <Content>
+        <Logo
+          source={{ uri: 'https://citi.org.br/wp-content/uploads/2021/09/image-66-1.png' }}
+        />
+        <Title>
+          &lt;Desenvolvimento /&gt;
+        </Title>
+        <RoundedButton text="Web" onPress={() => router.push({ pathname: '/details', params: { title: 'Web' } })} />
+        <RoundedButton text="Mobile" onPress={() => router.push({ pathname: '/details', params: { title: 'Mobile' } })} />
+      </Content>
+      <IconContainer onPress={() => { setShowPopUp(!showPopUp); }}>
+        <InfoIcon name="info-outline" />
+      </IconContainer>
+      <PopUp
+        TextTitle="<Desenvolvimento />"
+        TextSubtitle="A área responsável por traduzir soluções em um software funcional que visa a resolução de problemas.
+      Também responsável por entender a visão do produto, o caminho e a estratégia a ser trilhada."
+        PopUpOn={showPopUp}
+        FuncShowPopUp={() => { setShowPopUp(!showPopUp); }}
+      />
+    </Container>
+  );
+};
 
 export default Home;
